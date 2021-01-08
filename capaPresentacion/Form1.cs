@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using capaPresentacion.Ventanas;
 
 namespace capaPresentacion
 {
@@ -15,6 +16,12 @@ namespace capaPresentacion
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ReporteEmpleados reporte = new ReporteEmpleados();
+            reporte.Show();
         }
     }
 }
