@@ -44,7 +44,7 @@ namespace capaNegocio
 					}
 				}
 
-				if ((dec_sup(suma) - suma) == ced[9])
+				if ((dec_sup(suma) - suma) == ced[9] || (dec_sup(suma) - suma) == 10)
 				{
 					val = true;
 				}
