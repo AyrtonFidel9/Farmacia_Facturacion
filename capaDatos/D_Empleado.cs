@@ -10,12 +10,8 @@ using System.Data;
 
 namespace capaDatos
 {
-    public class D_Empleado
+    public class D_Empleado: Conexion
     {
-        SqlConnection cn = 
-            new SqlConnection(ConfigurationManager.ConnectionStrings["sqlconex"].ConnectionString);
-
-
         public DataTable D_listado ()
         {
             SqlCommand cmd = new SqlCommand("****", cn); //Aqui los Procedimientos almacenados
