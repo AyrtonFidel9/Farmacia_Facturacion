@@ -24,25 +24,34 @@ namespace capaPresentacion.Ventanas
         {
             N_ReporteEmpleado empleado = new N_ReporteEmpleado();
             List<E_Empleado> empleados = new List<E_Empleado>();
-
-            //MessageBox.Show(empleado.reporteEmpleados().Rows.Count.ToString());
-            foreach (DataRow item in empleado.reporteEmpleados().Rows)
+            if(empleado.reporteEmpleados() != null)
             {
-                empleados.Add(
-                    new E_Empleado
+                try
+                {
+                    //MessageBox.Show(empleado.reporteEmpleados().Rows.Count.ToString());
+                    foreach (DataRow item in empleado.reporteEmpleados().Rows)
                     {
-                        idEmpleado = item[0].ToString(),
-                        Cedula = item[4].ToString(),
-                        Nombre = item[2].ToString(),
-                        Apellido = item[3].ToString()
-                    });
-            }
+                        empleados.Add(
+                            new E_Empleado
+                            {
+                                idEmpleado = item[0].ToString(),
+                                Cedula = item[4].ToString(),
+                                Nombre = item[2].ToString(),
+                                Apellido = item[3].ToString()
+                            });
+                    }
 
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "capaPresentacion.Reportes.repEmpleados.rdlc";
-            ReportDataSource rds1 = new ReportDataSource("DataSet1", empleados);
-            this.reportViewer1.LocalReport.DataSources.Clear();
-            this.reportViewer1.LocalReport.DataSources.Add(rds1);
-            this.reportViewer1.RefreshReport();
+                    this.reportViewer1.LocalReport.ReportEmbeddedResource = "capaPresentacion.Reportes.repEmpleados.rdlc";
+                    ReportDataSource rds1 = new ReportDataSource("DataSet1", empleados);
+                    this.reportViewer1.LocalReport.DataSources.Clear();
+                    this.reportViewer1.LocalReport.DataSources.Add(rds1);
+                    this.reportViewer1.RefreshReport();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }
