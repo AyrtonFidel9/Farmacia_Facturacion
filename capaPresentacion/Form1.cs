@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using capaPresentacion.Ventanas;
+using capaPresentacion.Controles;
 
 namespace capaPresentacion
 {
@@ -22,6 +23,21 @@ namespace capaPresentacion
         {
             ReporteEmpleados reporte = new ReporteEmpleados();
             reporte.Show();
+        }
+
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            Inicio inicio = new Inicio();
+            if(pnlNavegacion.Contains(inicio) == false)
+            {
+                pnlNavegacion.Controls.Add(inicio);
+                inicio.Dock = DockStyle.Fill;
+                inicio.BringToFront();
+            }
+            else
+            {
+                inicio.BringToFront();
+            }
         }
     }
 }
